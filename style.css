@@ -151,6 +151,10 @@ body {
   color: white;
 }
 
+.chosen {
+  color: white;
+}
+
 .svg {
   position: absolute;
   z-index: 1;
