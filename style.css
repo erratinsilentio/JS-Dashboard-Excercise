@@ -139,6 +139,11 @@ body {
   font-size: 1.15rem;
   padding-left: 30px;
   color: var(--DesaturatedBlue);
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+.option:hover {
+  color: white;
 }
 
 .svg {
@@ -146,4 +151,12 @@ body {
   z-index: 1;
   top: 0;
   right: 30px;
+}
+
+.dots {
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+.dots:hover {
+  filter: brightness(150%);
 }
