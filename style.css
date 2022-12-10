@@ -89,8 +89,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  cursor: pointer;
+  transition-duration: 0.2s;
 }
-
+.info:hover {
+  filter: brightness(120%);
+}
 .title {
   font-size: 1.2rem;
   font-weight: 400;
