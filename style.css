@@ -164,3 +164,140 @@ body {
 .dots:hover {
   filter: brightness(150%);
 }
+
+@media (max-width: 400px) {
+  body {
+    height: auto;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .dashboard {
+    margin-top: 50px;
+    width: 90%;
+    height: auto;
+    background-color: var(--DarkBlue);
+    border-radius: 10px;
+    margin-bottom: 50px;
+  }
+
+  .card {
+    width: 90%;
+    height: 180px;
+    display: flex;
+  }
+
+  .card-1 {
+    grid-area: card-1;
+    background-color: var(--LightRed1);
+  }
+  .card-2 {
+    grid-area: card-2;
+    background-color: var(--SoftBlue);
+  }
+  .card-3 {
+    grid-area: card-3;
+    background-color: var(--LightRed2);
+  }
+  .card-4 {
+    grid-area: card-4;
+    background-color: var(--LimeGreen);
+  }
+  .card-5 {
+    grid-area: card-5;
+    background-color: var(--Violet);
+  }
+  .card-6 {
+    grid-area: card-6;
+    background-color: var(--SoftOrange);
+  }
+
+  .info {
+    display: grid;
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40% 70%;
+    grid-template-areas:
+      "title title"
+      "time last";
+    align-items: center;
+  }
+
+  .title {
+    grid-area: title;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .time {
+    display: flex;
+    align-items: center;
+    grid-area: time;
+    font-size: 3rem;
+  }
+  .last {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    grid-area: last;
+    font-size: 1rem;
+    color: var(--PaleBlue);
+  }
+  .dots {
+    height: 25%;
+    align-self: center;
+  }
+
+  .profile {
+    padding-left: 40px;
+    padding-right: 40px;
+    height: auto;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: 100px 200px;
+    grid-template-rows: 40px 60px;
+    grid-template-areas:
+      "img report"
+      "img name";
+  }
+  .image {
+    height: 100px;
+    margin-bottom: 30px;
+    grid-area: img;
+  }
+  .photo {
+    width: 80px;
+    border-radius: 50%;
+  }
+  .report {
+    font-size: 1rem;
+    color: var(--PaleBlue);
+    grid-area: report;
+    align-self: flex-end;
+    margin-bottom: 5px;
+  }
+  .name {
+    font-size: 1.5rem;
+    width: 200px;
+    grid-area: name;
+  }
+  .options {
+    height: initial;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-direction: row;
+  }
+  .option {
+    font-size: 1.25rem;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
