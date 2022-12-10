@@ -170,22 +170,21 @@ body {
 @media (max-width: 400px) {
   body {
     height: auto;
+    padding-top: 75px;
+    padding-bottom: 75px;
   }
   .container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 50px;
   }
 
   .dashboard {
-    margin-top: 50px;
     width: 90%;
     height: auto;
     background-color: var(--DarkBlue);
     border-radius: 10px;
-    margin-bottom: 50px;
   }
 
   .card {
