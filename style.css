@@ -159,10 +159,11 @@ body {
 
 .dots {
   cursor: pointer;
+  height: 5px;
   transition-duration: 0.2s;
 }
 .dots:hover {
-  filter: brightness(150%);
+  filter: brightness(200%);
 }
 
 @media (max-width: 400px) {
