@@ -101,6 +101,7 @@ body {
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .time {
   font-size: 4rem;
