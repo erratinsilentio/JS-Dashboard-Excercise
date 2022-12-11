@@ -1,13 +1,3 @@
-// let data;
-
-// fetch("./data.json")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     data = data;
-//     console.log(data);
-//   })
-//   .catch((error) => console.log(error));
-
 const title1 = document.getElementById("title-1");
 const title2 = document.getElementById("title-2");
 const title3 = document.getElementById("title-3");
@@ -78,11 +68,42 @@ async function load() {
   timeframe = "Daily";
   checkTimeframe();
 
-  let titlesFromDOM = [title1, title2, title3, title4, title5, title6];
+  const titlesFromDOM = [title1, title2, title3, title4, title5, title6];
   let titlesFromJSON = data.map((item) => item.title);
+
+  const currentFromDOM = [time1, time2, time3, time4, time5, time6];
+  const lastFromDOM = [last1, last2, last3, last4, last5, last6];
 
   for (let i = 0; i < titlesFromDOM.length; i++) {
     titlesFromDOM[i].textContent = titlesFromJSON[i];
+  }
+
+  // if timeframe daily:
+  if (timeframe === "Daily") {
+    for (let i = 0; i < currentFromDOM.length; i++) {
+      currentFromDOM[i].textContent = data[i].timeframes.daily.current + "Hrs";
+      lastFromDOM[i].textContent =
+        "Last day - " + data[i].timeframes.daily.previous + "Hrs";
+    }
+  }
+
+  // if timeframe weekly:
+  if (timeframe === "Weekly") {
+    for (let i = 0; i < currentFromDOM.length; i++) {
+      currentFromDOM[i].textContent = data[i].timeframes.weekly.current + "Hrs";
+      lastFromDOM[i].textContent =
+        "Last week - " + data[i].timeframes.weekly.previous + "Hrs";
+    }
+  }
+
+  // if timeframe monthly:
+  if (timeframe === "Monthly") {
+    for (let i = 0; i < currentFromDOM.length; i++) {
+      currentFromDOM[i].textContent =
+        data[i].timeframes.monthly.current + "Hrs";
+      lastFromDOM[i].textContent =
+        "Last month - " + data[i].timeframes.monthly.previous + "Hrs";
+    }
   }
 }
 
