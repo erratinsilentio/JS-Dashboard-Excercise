@@ -31,13 +31,6 @@ const timeframes = [
   { element: monthly, name: "Monthly" },
 ];
 
-timeframes.forEach((item) => {
-  item.element.addEventListener("click", () => {
-    timeframe = item.name;
-    checkTimeframe();
-  });
-});
-
 const checkTimeframe = () => {
   if (timeframe === "Daily") {
     weekly.classList.remove("chosen");
@@ -78,33 +71,39 @@ async function load() {
     titlesFromDOM[i].textContent = titlesFromJSON[i];
   }
 
-  // if timeframe daily:
-  if (timeframe === "Daily") {
-    for (let i = 0; i < currentFromDOM.length; i++) {
-      currentFromDOM[i].textContent = data[i].timeframes.daily.current + "Hrs";
-      lastFromDOM[i].textContent =
-        "Last day - " + data[i].timeframes.daily.previous + "Hrs";
-    }
-  }
+  timeframes.forEach((item) => {
+    item.element.addEventListener("click", () => {
+      timeframe = item.name;
+      checkTimeframe();
 
-  // if timeframe weekly:
-  if (timeframe === "Weekly") {
-    for (let i = 0; i < currentFromDOM.length; i++) {
-      currentFromDOM[i].textContent = data[i].timeframes.weekly.current + "Hrs";
-      lastFromDOM[i].textContent =
-        "Last week - " + data[i].timeframes.weekly.previous + "Hrs";
-    }
-  }
+      if (timeframe === "Daily") {
+        for (let i = 0; i < currentFromDOM.length; i++) {
+          currentFromDOM[i].textContent =
+            data[i].timeframes.daily.current + "Hrs";
+          lastFromDOM[i].textContent =
+            "Last day - " + data[i].timeframes.daily.previous + "Hrs";
+        }
+      }
 
-  // if timeframe monthly:
-  if (timeframe === "Monthly") {
-    for (let i = 0; i < currentFromDOM.length; i++) {
-      currentFromDOM[i].textContent =
-        data[i].timeframes.monthly.current + "Hrs";
-      lastFromDOM[i].textContent =
-        "Last month - " + data[i].timeframes.monthly.previous + "Hrs";
-    }
-  }
+      if (timeframe === "Weekly") {
+        for (let i = 0; i < currentFromDOM.length; i++) {
+          currentFromDOM[i].textContent =
+            data[i].timeframes.weekly.current + "Hrs";
+          lastFromDOM[i].textContent =
+            "Last week - " + data[i].timeframes.weekly.previous + "Hrs";
+        }
+      }
+
+      if (timeframe === "Monthly") {
+        for (let i = 0; i < currentFromDOM.length; i++) {
+          currentFromDOM[i].textContent =
+            data[i].timeframes.monthly.current + "Hrs";
+          lastFromDOM[i].textContent =
+            "Last month - " + data[i].timeframes.monthly.previous + "Hrs";
+        }
+      }
+    });
+  });
 }
 
 window.addEventListener("load", load);
