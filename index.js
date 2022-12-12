@@ -25,12 +25,6 @@ const monthly = document.getElementById("monthly");
 
 let timeframe;
 
-const timeframes = [
-  { element: daily, name: "Daily" },
-  { element: weekly, name: "Weekly" },
-  { element: monthly, name: "Monthly" },
-];
-
 const checkTimeframe = () => {
   if (timeframe === "Daily") {
     weekly.classList.remove("chosen");
@@ -54,22 +48,38 @@ const checkTimeframe = () => {
 };
 
 async function load() {
+  // GET THE DATA
   const json = await fetch("/data.json");
   const data = await json.json();
   console.log(data);
 
+  // MAKE ARRAYS WITH DOM ELEMENTS THAT DISPLAY DATA
+  const currentFromDOM = [time1, time2, time3, time4, time5, time6];
+  const lastFromDOM = [last1, last2, last3, last4, last5, last6];
+  const titlesFromDOM = [title1, title2, title3, title4, title5, title6];
+
+  // DISPLAY THE CATEGORIES LISTED IN DATA
+  let titlesFromJSON = data.map((item) => item.title);
+
+  // SET DAILY TIMEFRAME TO DEFAULT WHEN PAGE LOADS
   timeframe = "Daily";
   checkTimeframe();
 
-  const titlesFromDOM = [title1, title2, title3, title4, title5, title6];
-  let titlesFromJSON = data.map((item) => item.title);
-
-  const currentFromDOM = [time1, time2, time3, time4, time5, time6];
-  const lastFromDOM = [last1, last2, last3, last4, last5, last6];
-
+  // POPULATE DEFAULT DAILY DATA ON PAGE LOAD
   for (let i = 0; i < titlesFromDOM.length; i++) {
     titlesFromDOM[i].textContent = titlesFromJSON[i];
+
+    currentFromDOM[i].textContent = data[i].timeframes.daily.current + "Hrs";
+    lastFromDOM[i].textContent =
+      "Last day - " + data[i].timeframes.daily.previous + "Hrs";
   }
+
+  // ADD EVENT LISTENERS TO CHANGE TIMEFRAMES AND SHOW DIFFERENT DATA
+  const timeframes = [
+    { element: daily, name: "Daily" },
+    { element: weekly, name: "Weekly" },
+    { element: monthly, name: "Monthly" },
+  ];
 
   timeframes.forEach((item) => {
     item.element.addEventListener("click", () => {

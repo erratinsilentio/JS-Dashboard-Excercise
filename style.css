@@ -78,6 +78,7 @@ body {
 }
 
 .info {
+  overflow: hidden;
   z-index: 20;
   width: 100%;
   height: 140px;
@@ -254,6 +255,7 @@ body {
     grid-area: last;
     font-size: 1rem;
     color: var(--PaleBlue);
+    text-align: right;
   }
   .dots {
     height: 25%;
